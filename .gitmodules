@@ -1,0 +1,3 @@
+[submodule "sy-setup-files"]
+	path = sy-setup-files
+	url = git@github.com:relateiq/sy-setup-files.git
