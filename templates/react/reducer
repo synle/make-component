@@ -1,0 +1,23 @@
+// internal
+import _ from 'lodash';
+
+// default state
+const DEFAULT_STATE = {
+  value: null
+};
+
+// {{ORIG_FNAME}} reducer
+const {{ORIG_FNAME}}Reducer = (state = DEFAULT_STATE, {type, value}) => {
+  switch(type){
+    case 'SOME_ACTION':
+      state.value = value;
+      break;
+  }
+
+  return Object.assign(
+    {},
+    state
+  );
+}
+
+export default {{ORIG_FNAME}}Reducer;
