@@ -1,9 +1,10 @@
 {
-  "name": "make-angular1-component",
+  "name": "make-component",
   "version": "1.0.0",
   "description": "simple code that generates the skeleton for angular 1 code",
   "main": "index.js",
   "scripts": {
+    "build": "node generateScript",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Sy Le",

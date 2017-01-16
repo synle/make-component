@@ -41,7 +41,7 @@ function new-angular-component(){
 #!/usr/bin/env node
 
 //includes
-require('./make--component')([
+require('./index')([
     ['template/angular-templates/index.js', 'index.js', true],
     ['template/angular-templates/ctrl.js', 'Ctrl.js'],
     ['template/angular-templates/drtv.js', 'Drtv.js'],
@@ -53,6 +53,9 @@ require('./make--component')([
 
 
 ## Make script executable
+By default you can run `npm run build`, this will generate the script for files starting with `make-*.js` in this folder needed for running your code.
+
+If you are hardcore, you can do the following shell script
 ```
 # Make script executable
 chmod +x your-script.js;
