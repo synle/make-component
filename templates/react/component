@@ -1,0 +1,40 @@
+import React from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import _ from 'lodash';
+
+//internal
+// import AppAction from '@src/store/AppAction';
+
+
+const {{ORIG_FNAME}} = React.createClass({
+  render() {
+    const {content} = this.props;
+
+    return (
+      <div>
+        Hello World <button onClick={this.onButtonClick}>{content}</button>
+      </div>
+    );
+  },
+  onButtonClick(){
+    alert('hello world...');
+  }
+});
+
+
+const mapStateToProps = function(state) {
+  return {
+    content: '{{CAMEL_FNAME}}'
+    // isVisible : _.get( state, 'some_path' )
+  };
+}
+
+
+const mapDispatchToProps = function(dispatch) {
+  return {
+    // onUpdate: bindActionCreators(AppAction.updateApiToken, dispatch)
+ };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)({{ORIG_FNAME}});

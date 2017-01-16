@@ -2,6 +2,6 @@
 
 //includes
 require('./index')([
-    ['templates/react/index', 'index.js', true]
+    ['templates/react/component', 'Component.js']
 ]);
 
