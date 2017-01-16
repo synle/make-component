@@ -3,7 +3,11 @@ var fs = require('fs');
 var path = require('path');
 var _ = require('lodash');
 
-module.exports = function(argv, processCwd, config){
+module.exports = function(config, argv, processCwd){
+    // default input
+    argv = argv || process.argv;
+    processCwd = processCwd || process.cwd();
+
     //get input
     var args = argv.slice(2);
     var fileName = args[0] || processCwd.substr(processCwd.lastIndexOf('/') + 1);
@@ -40,7 +44,7 @@ module.exports = function(argv, processCwd, config){
     }
 
     function _readTemplate(filePath) {
-        var directiveName = fileName.replace(/^SFDC/, 'sfdc');
+        var directiveName = _.lowerFirst(fileName.replace(/^SFDC/, 'sfdc'));
         var dashCaseName = _.kebabCase(directiveName);
         var underscoreCaseName = _.snakeCase(directiveName);
 
