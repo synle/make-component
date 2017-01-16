@@ -15,12 +15,14 @@ console.log('>> processCwd', processCwd)
 
 // only look at files that start with make-
 files = files.filter(function(file) {
+    // TODO: find a better convention...
     return !file.indexOf('make-');
 });
 
 
 
 var scriptContentBuffer = [];
+var scriptContentHelpBuffer = [];
 
 console.log('>> Processing files:');
 files.forEach(function(file) {
@@ -38,11 +40,15 @@ files.forEach(function(file) {
         path.join(processCwd, file) + ' $@',
         '}'
     ].join('\n'));
+
+    scriptContentHelpBuffer.push('  ' + commandName);
 });
+
+scriptContentHelpBuffer = 'function make-help(){\n echo """Help?\n' + scriptContentHelpBuffer.join('\n') + '\n"""\n}';
 
 
 // write to output
-fs.writeFileSync(outputBashPath, scriptContentBuffer.join('\n'));
+fs.writeFileSync(outputBashPath, scriptContentBuffer.concat(scriptContentHelpBuffer).join('\n'));
 fs.chmodSync(outputBashPath, '755'); // -r-xr-xr-x
 
 console.log('>> Please include the following to your bash profile (~/.bash_profile in Mac or ~/.bashrc in Ubuntu)');
