@@ -4,9 +4,7 @@ Make sample code for your angular 1 component from command line
 
 ## To install
 ```
-function new-angular-component(){
-    ~/git/make-angular1-component/make-component.js $@
-}
+npm i;
 ```
 
 

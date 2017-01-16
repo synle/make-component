@@ -2,10 +2,10 @@
 
 //includes
 require('./index')([
-    ['templates/salesforce-aura/app.template', '.app'],
-    ['templates/salesforce-aura/controller.template', 'Controller.js'],
-    ['templates/salesforce-aura/css.template', '.css'],
-    ['templates/salesforce-aura/helper.template', 'Helper.js'],
-    ['templates/salesforce-aura/renderer.template', 'Renderer.js'],
-    ['templates/salesforce-aura/test.template', 'Test.js'],
+    ['templates/salesforce-aura/app', '.app'],
+    ['templates/salesforce-aura/controller', 'Controller.js'],
+    ['templates/salesforce-aura/css', '.css'],
+    ['templates/salesforce-aura/helper', 'Helper.js'],
+    ['templates/salesforce-aura/renderer', 'Renderer.js'],
+    ['templates/salesforce-aura/test', 'Test.js'],
 ]);

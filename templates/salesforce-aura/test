@@ -1,0 +1,18 @@
+({
+	owner:"syle",
+
+	test: {
+		attributes : {"renderItem" : "basic"},
+        test: [function(cmp) {
+
+        }, function(cmp){
+
+        }]
+    }
+
+
+    /**
+     * HELPER
+     */
+
+})
