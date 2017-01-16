@@ -35,18 +35,26 @@ npm i;
 
 
 ## Custom "make-component.js"
+### Silent Mode (infer the module name from parent base path name)
 ```
 #!/usr/bin/env node
 
 //includes
-require('./index')([
-    ['template/angular-templates/index.js', 'index.js', true],
-    ['template/angular-templates/ctrl.js', 'Ctrl.js'],
-    ['template/angular-templates/drtv.js', 'Drtv.js'],
-    ['template/angular-templates/srvc.js', 'Srvc.js'],
-    ['template/angular-templates/html.js', '.html'],
-    ['template/angular-templates/srvc.test.js', 'Srvc.spec.js']
+require('./index').process([
+    ['templates/angular-1/html', '.html']
 ]);
+```
+
+### Prompt Mode (get the module name from cli prompt)
+```
+#!/usr/bin/env node
+
+require('./index').processWithPrompt(
+    'Enter React Component name',
+    [
+        ['templates/react/component', 'Component.js']
+    ]
+);
 ```
 
 
@@ -56,11 +64,11 @@ By default you can run `npm run build`, this will generate the script for files 
 If you are hardcore, you can do the following shell script
 ```
 # Make script executable
-chmod +x your-script.js;
+chmod +x make-your-script.js;
 
 # Make a function in your bash to call it
 function make-your-script(){
-    ~/git/make-code/your-script.js \
+    ~/git/make-code/make-your-script.js \
         $@
 }
 ```

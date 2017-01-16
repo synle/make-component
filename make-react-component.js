@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 
-//includes
-require('./index')([
-    ['templates/react/component', 'Component.js']
-]);
-
+require('./index').processWithPrompt(
+    'Enter React Component name',
+    [
+        ['templates/react/component', 'Component.js']
+    ]
+);

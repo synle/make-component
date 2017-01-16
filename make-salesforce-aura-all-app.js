@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 //includes
-require('./index')([
+require('./index').process([
     ['templates/salesforce-aura/app', '.app'],
     ['templates/salesforce-aura/controller', 'Controller.js'],
     ['templates/salesforce-aura/css', '.css'],

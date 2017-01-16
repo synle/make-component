@@ -1,7 +1,9 @@
 #!/usr/bin/env node
 
 //includes
-require('./index')([
-    ['templates/react/reducer', 'Reducer.js']
-]);
-
+require('./index').processWithPrompt(
+    'Enter Reducer name',
+    [
+        ['templates/react/reducer', 'Reducer.js']
+    ]
+);

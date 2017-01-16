@@ -3,14 +3,15 @@ var fs = require('fs');
 var path = require('path');
 var _ = require('lodash');
 
-module.exports = function(config, argv, processCwd){
+
+function _process(config, fileName, argv, processCwd){
     // default input
     argv = argv || process.argv;
     processCwd = processCwd || process.cwd();
 
     //get input
     var args = argv.slice(2);
-    var fileName = args[0] || processCwd.substr(processCwd.lastIndexOf('/') + 1);
+    fileName = fileName || args[0] || processCwd.substr(processCwd.lastIndexOf('/') + 1);
     var filePath = args[1] || processCwd;
     if(fileName){
         console.log('preparing template for ', fileName, filePath);
@@ -30,6 +31,9 @@ module.exports = function(config, argv, processCwd){
     }
 
 
+    // all done. exit
+    process.exit(0);
+
     function _writeTemplate(content, name, dontOverrideName) {
         var dest;
 
@@ -39,7 +43,7 @@ module.exports = function(config, argv, processCwd){
             dest = path.join(filePath, fileName + name);
         }
 
-        fs.writeFile(dest, content);
+        fs.writeFileSync(dest, content);
         console.log('>>', dest);
     }
 
@@ -54,5 +58,20 @@ module.exports = function(config, argv, processCwd){
         return content.replace(/{{ORIG_FNAME}}/g, fileName)
                     .replace(/{{CAMEL_FNAME}}/g, directiveName)
                     .replace(/{{DASH_FNAME}}/g, dashCaseName);
+    }
+}
+
+
+module.exports = {
+    // this will ask for module name
+    processWithPrompt: function processWithPrompt(promptName, config){
+        require('./commandPrompt')(promptName)
+            .then(function(fileName){
+                _process(config, fileName);
+            });
+    },
+    // silent process, no prompt for module name
+    process: function process(config){
+        _process(config);
     }
 }
