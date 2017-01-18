@@ -2,9 +2,8 @@ var moduleName = '{{ORIG_FNAME}}Srvc';
 module.exports = moduleName;
 
 angular.module(moduleName, [
-    'uiq'
 ])
-    .directive('{{ORIG_FNAME}}Srvc', function () {
+    .factory('{{ORIG_FNAME}}Srvc', function () {
         var {{ORIG_FNAME}}Srvc = {};
 
         // methods
