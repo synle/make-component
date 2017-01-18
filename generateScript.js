@@ -52,7 +52,7 @@ fs.writeFileSync(outputBashPath, scriptContentBuffer.concat(scriptContentHelpBuf
 fs.chmodSync(outputBashPath, '755'); // -r-xr-xr-x
 
 console.log('>> Please include the following to your bash profile (~/.bash_profile in Mac or ~/.bashrc in Ubuntu)');
-console.log('[ -s ' + outputBashPathFull + ' ] && . ' + outputBashPathFull);
+console.log('echo \'[ -s ' + outputBashPathFull + ' ] && . ' + outputBashPathFull + '\'');
 
 
 

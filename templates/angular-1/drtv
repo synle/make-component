@@ -4,7 +4,7 @@ module.exports = moduleName;
 angular.module(moduleName, [
     'uiq'
 ])
-    .directive('{{CAMEL_FNAME}}', function() {
+    .directive('{{CAMEL_FNAME}}', function () {
         return {
             restrict: 'E',
             replace: true,
