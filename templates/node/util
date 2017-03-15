@@ -1,0 +1,7 @@
+var {{ORIG_FNAME}}Util = {};
+
+{{ORIG_FNAME}}Util.method = function method(){
+    return true;
+}
+
+module.exports = {{ORIG_FNAME}}Util;
