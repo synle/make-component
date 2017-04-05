@@ -41,10 +41,10 @@ files.forEach(function(file) {
         '}'
     ].join('\n'));
 
-    scriptContentHelpBuffer.push('  ' + commandName);
+    scriptContentHelpBuffer.push(commandName);
 });
 
-scriptContentHelpBuffer = 'function make-help(){\n echo """Help?\n' + scriptContentHelpBuffer.join('\n') + '\n"""\n}';
+scriptContentHelpBuffer = 'function make-help(){\n echo """' + scriptContentHelpBuffer.join('\n') + '\n"""\n}';
 
 
 // write to output
