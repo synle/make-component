@@ -1,7 +1,10 @@
-//includes
+// public lib
 var fs = require('fs');
 var path = require('path');
 var _ = require('lodash');
+
+// private lib
+var commandPrompt = require('./commandPrompt');
 
 
 function _process(config, fileName, argv, processCwd){
@@ -38,8 +41,15 @@ function _process(config, fileName, argv, processCwd){
         var dest;
 
         if(!!dontOverrideName){
+            // use whatever name they passed
+            // index.js
             dest = path.join(filePath, name);
         } else {
+            // use concat logics to get the name with the suffix
+            //      say filename is MyComponent
+            //      and suffix name is Controller
+            //      ===================================================
+            //      finally the resulting name is MyComponentController
             dest = path.join(filePath, fileName + name);
         }
 
@@ -86,13 +96,14 @@ function _getParsedConfig(config) {
 }
 
 module.exports = {
-    // this will ask for module name
+    // this allow prompt for entering names...
     processWithPrompt: function processWithPrompt(promptName, config){
-        require('./commandPrompt')(promptName)
+        commandPrompt(promptName)
             .then(function(fileName){
                 _process(config, fileName);
             });
     },
+
     // silent process, no prompt for module name
     process: function process(config){
         _process(config);
