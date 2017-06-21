@@ -33,6 +33,8 @@ npm run build;
 | {{ORIG_FNAME}}        |             | MyComponent      | MyComponent        |
 | {{CAMEL_FNAME}}       | _.kebabCase | MyComponent      | myComponent        |
 | {{UNDERSCORE_FNAME}}  | _.snakeCase | MyComponent      | my_component       |
+| {{HYPHEN_FNAME}}      | _.FI        | MyComponent      | my-component       |
+
 
 
 

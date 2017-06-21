@@ -29,8 +29,12 @@ function _process(config, fileName, argv, processCwd){
         MAP_DICTIONARY_REPLACEMENT = {
             ORIG_FNAME: fileName, // MyComponent
             CAMEL_FNAME: _.kebabCase(camelCaseFileName), // myComponent
-            UNDERSCORE_FNAME: _.snakeCase(camelCaseFileName) // my_component
+            UNDERSCORE_FNAME: _.snakeCase(camelCaseFileName), // my_component
+            HYPHEN_FNAME: _.hyphenCase(camelCaseFileName) // my-component
         };
+
+        // construct the map from the big dictionary...
+
 
         config.map(function(configOption){
             var templateFile = configOption[0];
@@ -92,6 +96,15 @@ function _process(config, fileName, argv, processCwd){
 }
 
 
+/**
+ * @param  {[type]} config either array or objects containing the config for parsing...
+ * @return {[type]}        parsed configs in  the form of an array of 3 items
+ * form the the array...
+ *     1. templateFile
+ *     2. outSuffixName
+ *     3. dontOverrideName
+ *
+ */
 function _getParsedConfig(config) {
     if(!config){
         throw 'config is required for processing function';
