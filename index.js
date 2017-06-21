@@ -16,8 +16,21 @@ function _process(config, fileName, argv, processCwd){
     var args = argv.slice(2);
     fileName = fileName || args[0] || processCwd.substr(processCwd.lastIndexOf('/') + 1);
     var filePath = args[1] || processCwd;
+
+    // dictionary to be used
+    var MAP_DICTIONARY_REPLACEMENT;
+
     if(fileName){
         console.log('preparing template for ', fileName, filePath);
+
+        var camelCaseFileName = _.lowerFirst(fileName.replace(/^SFDC/, 'sfdc'));
+
+        // dictionary for file name...
+        MAP_DICTIONARY_REPLACEMENT = {
+            ORIG_FNAME: fileName, // MyComponent
+            CAMEL_FNAME: _.kebabCase(camelCaseFileName), // myComponent
+            DASH_FNAME: _.snakeCase(camelCaseFileName) // my_component
+        };
 
         config.map(function(configOption){
             var templateFile = configOption[0];
@@ -64,20 +77,11 @@ function _process(config, fileName, argv, processCwd){
     }
 
     function _doStringReplacement(content){
-        var camelCaseFileName = _.lowerFirst(fileName.replace(/^SFDC/, 'sfdc'));
-
-        // dictionary for file name...
-        var mapFileNames = {
-            ORIG_FNAME: fileName, // MyComponent
-            CAMEL_FNAME: _.kebabCase(camelCaseFileName), // myComponent
-            DASH_FNAME: _.snakeCase(camelCaseFileName) // my_component
-        };
-
         var finalContent = content;
-        Object.keys(mapFileNames)
+        Object.keys(MAP_DICTIONARY_REPLACEMENT)
             .forEach(function(replacementKey){
                 var replacementRegex = new RegExp('{{' + replacementKey + '}}', 'g');
-                var replacementValue = mapFileNames[replacementKey];
+                var replacementValue = MAP_DICTIONARY_REPLACEMENT[replacementKey];
 
                 finalContent = finalContent.replace(replacementRegex, replacementValue);
             });
