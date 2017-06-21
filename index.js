@@ -58,16 +58,32 @@ function _process(config, fileName, argv, processCwd){
     }
 
     function _readTemplate(filePath) {
-        var directiveName = _.lowerFirst(fileName.replace(/^SFDC/, 'sfdc'));
-        var dashCaseName = _.kebabCase(directiveName);
-        var underscoreCaseName = _.snakeCase(directiveName);
-
-
         console.log(path.join(__dirname, filePath));
         var content = fs.readFileSync(path.join(__dirname, filePath), 'utf8');
-        return content.replace(/{{ORIG_FNAME}}/g, fileName)
-                    .replace(/{{CAMEL_FNAME}}/g, directiveName)
-                    .replace(/{{DASH_FNAME}}/g, dashCaseName);
+        return _doStringReplacement(content);
+    }
+
+    function _doStringReplacement(content){
+        var camelCaseFileName = _.lowerFirst(fileName.replace(/^SFDC/, 'sfdc'));
+
+        // dictionary for file name...
+        var mapFileNames = {
+            ORIG_FNAME: fileName, // MyComponent
+            CAMEL_FNAME: _.kebabCase(camelCaseFileName), // myComponent
+            DASH_FNAME: _.snakeCase(camelCaseFileName) // my_component
+        };
+
+        var finalContent = content;
+        Object.keys(mapFileNames)
+            .forEach(function(replacementKey){
+                var replacementRegex = new RegExp('{{' + replacementKey + '}}', 'g');
+                var replacementValue = mapFileNames[replacementKey];
+
+                finalContent = finalContent.replace(replacementRegex, replacementValue);
+            });
+
+
+        return finalContent;
     }
 }
 
