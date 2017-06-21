@@ -7,32 +7,32 @@ import _ from 'lodash';
 // import Action from '@src/store/Action';
 
 const {{ORIG_FNAME}}Component = React.createClass({
-  render() {
-    const {content} = this.props;
+    render() {
+        const {content} = this.props;
 
-    return (
-      <div>
-        Hello World <button onClick={this.onButtonClick}>{content}</button>
-      </div>
-    );
-  },
-  onButtonClick(){
-    alert('hello world...');
-  }
+        return (
+            <div>
+                Hello World <button onClick={this.onButtonClick}>{content}</button>
+            </div>
+        );
+    },
+    onButtonClick(){
+        alert('hello world...');
+    }
 });
 
 
 const mapStateToProps = function(state) {
-  return {
-    content: '{{CAMEL_FNAME}}'
-    // isVisible : _.get( state, 'some_path' )
-  };
+    return {
+        content: '{{CAMEL_FNAME}}'
+        // isVisible : _.get( state, 'some_path' )
+    };
 }
 
 
 const mapDispatchToProps = function(dispatch) {
-  return {
-    // onUpdate: bindActionCreators(Action.updateApiToken, dispatch)
+    return {
+        // onUpdate: bindActionCreators(Action.updateApiToken, dispatch)
  };
 }
 

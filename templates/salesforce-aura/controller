@@ -1,4 +1,4 @@
 ({
-	init: function (cmp, helper) {
+    init: function (cmp, helper) {
     }
 })

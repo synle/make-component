@@ -1,16 +1,16 @@
 ({
-	render : function(cmp, helper) {
-	},
+    render : function(cmp, helper) {
+    },
 
-	rerender : function(cmp, helper) {
+    rerender : function(cmp, helper) {
 
-	},
+    },
 
-	afterRender : function(cmp, helper) {
+    afterRender : function(cmp, helper) {
 
-	},
+    },
 
-	unrender : function(cmp) {
+    unrender : function(cmp) {
 
-	}
+    }
 })

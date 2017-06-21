@@ -1,8 +1,8 @@
 ({
-	owner:"syle",
+    owner:"syle",
 
-	test: {
-		attributes : {"renderItem" : "basic"},
+    test: {
+        attributes : {"renderItem" : "basic"},
         test: [function(cmp) {
 
         }, function(cmp){
