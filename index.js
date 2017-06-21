@@ -62,6 +62,29 @@ function _process(config, fileName, argv, processCwd){
 }
 
 
+function _getParsedConfig(config) {
+    if(!config){
+        throw 'config is required for processing function';
+    }
+
+    var parsedConfig = config;
+    if(!_.isArray(config)){
+        // is of type objects...
+        // if it is not an array, then translate it
+        parsedConfig = [
+            config.templateFile,
+            config.outSuffixName,
+            config.fileRenameFunc
+        ];
+    }
+    // else {
+    //     //config is an array of 3 items
+    //         //1. templateFile
+    //         //2. outSuffixName
+    //         //3. dontOverrideName
+    // }
+}
+
 module.exports = {
     // this will ask for module name
     processWithPrompt: function processWithPrompt(promptName, config){
