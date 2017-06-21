@@ -28,11 +28,11 @@ npm run build;
 
 
 ## Replacement Strategy
-| Token           | Method Used | OriginalFileName | Sample Replacement |
-|-----------------|-------------|------------------|--------------------|
-| {{ORIG_FNAME}}  |             | MyComponent      | MyComponent        |
-| {{CAMEL_FNAME}} | _.kebabCase | MyComponent      | myComponent        |
-| {{DASH_FNAME}}  | _.snakeCase | MyComponent      | my_component       |
+| Token                 | Method Used | OriginalFileName | Sample Replacement |
+|-----------------------|-------------|------------------|--------------------|
+| {{ORIG_FNAME}}        |             | MyComponent      | MyComponent        |
+| {{CAMEL_FNAME}}       | _.kebabCase | MyComponent      | myComponent        |
+| {{UNDERSCORE_FNAME}}  | _.snakeCase | MyComponent      | my_component       |
 
 
 

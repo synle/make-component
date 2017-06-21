@@ -29,7 +29,7 @@ function _process(config, fileName, argv, processCwd){
         MAP_DICTIONARY_REPLACEMENT = {
             ORIG_FNAME: fileName, // MyComponent
             CAMEL_FNAME: _.kebabCase(camelCaseFileName), // myComponent
-            DASH_FNAME: _.snakeCase(camelCaseFileName) // my_component
+            UNDERSCORE_FNAME: _.snakeCase(camelCaseFileName) // my_component
         };
 
         config.map(function(configOption){
