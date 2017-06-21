@@ -30,10 +30,28 @@ function _process(config, fileName, argv, processCwd){
             ORIG_FNAME: fileName, // MyComponent
             CAMEL_FNAME: _.kebabCase(camelCaseFileName), // myComponent
             UNDERSCORE_FNAME: _.snakeCase(camelCaseFileName), // my_component
-            HYPHEN_FNAME: _.hyphenCase(camelCaseFileName) // my-component
+            HYPHEN_FNAME: _.snakeCase(camelCaseFileName).replace(/_/g, '-') // my-component
         };
 
         // construct the map from the big dictionary...
+        var bigDictFileNames = _getFilesFromDir('./dictionary');
+        bigDictFileNames.forEach(function(bigDictFileName){
+            var bigDictFileContent = _readFileContent(bigDictFileName);
+            var bigDictFileJsonData;
+
+            try{
+                bigDictFileJsonData = JSON.parse(bigDictFileContent);
+                Object.keys(bigDictFileJsonData).forEach(function(bigDictKey){
+                    var bigDictValue = bigDictFileJsonData[bigDictKey];
+
+                    //fileName.bigDictKey
+                    var bigDictLookupKey = bigDictFileName + '.' + bigDictKey;
+                    MAP_DICTIONARY_REPLACEMENT[bigDictLookupKey] = bigDictValue;
+                });
+            } catch(e){
+                console.log('Error Parsing Big Dictionary File Name', bigDictFileName);
+            }
+        });
 
 
         config.map(function(configOption){
@@ -76,7 +94,7 @@ function _process(config, fileName, argv, processCwd){
 
     function _readTemplate(filePath) {
         console.log(path.join(__dirname, filePath));
-        var content = fs.readFileSync(path.join(__dirname, filePath), 'utf8');
+        var content = _readFileContent(filePath);
         return _doStringReplacement(content);
     }
 
@@ -126,6 +144,26 @@ function _getParsedConfig(config) {
     //         //2. outSuffixName
     //         //3. dontOverrideName
     // }
+}
+
+function _getFilesFromDir(pathToRead) {
+    var filePaths = [];
+
+    return new Promise(
+        function(resolve) {
+            fs.readdirSync(pathToRead).forEach(
+                function(fileName){
+                    filePaths.push(fileName);
+                }
+            );
+
+            resolve(filePaths);
+        }
+    );
+}
+
+function _readFileContent(filePath){
+    return fs.readFileSync(path.join(__dirname, filePath), 'utf8')
 }
 
 module.exports = {
