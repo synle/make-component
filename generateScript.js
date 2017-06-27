@@ -9,7 +9,7 @@ var processCwd = process.cwd();
 var outputBashPath = './setup.sh';
 var outputBashPathFull = '"' + path.join(processCwd, outputBashPath) + '"';
 
-files = fs.readdirSync('./', function(err, files) {});
+files = fs.readdirSync('./');
 
 console.log('>> processCwd', processCwd)
 
