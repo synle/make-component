@@ -2,6 +2,7 @@ import './index.css';
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 
+// base component
 export const _Component = (props) => {
   return (
     <div className="{{DASH_FNAME}}">
@@ -14,10 +15,12 @@ export const _Component = (props) => {
 const mapStateToProps = state => {
   return {}
 };
+
 const mapDispatchToProps = dispatch => {
   return {}
 };
 
+// connect the component
 export default connect(
   mapStateToProps,
   mapDispatchToProps
