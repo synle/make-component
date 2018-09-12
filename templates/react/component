@@ -1,5 +1,6 @@
 import './index.css';
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
 
 export const _Component = (props) => {
   return (
