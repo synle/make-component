@@ -57,7 +57,8 @@ function _process(config, fileName, argv, processCwd){
         var content = fs.readFileSync(path.join(__dirname, filePath), 'utf8');
         return content.replace(/{{ORIG_FNAME}}/g, fileName)
                     .replace(/{{CAMEL_FNAME}}/g, directiveName)
-                    .replace(/{{DASH_FNAME}}/g, dashCaseName);
+                    .replace(/{{DASH_FNAME}}/g, dashCaseName)
+                    .replace(/{{SNAKE_FNAME}}/g, underscoreCaseName);
     }
 }
 
