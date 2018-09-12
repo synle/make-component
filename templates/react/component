@@ -1,39 +1,23 @@
-import React from 'react';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import _ from 'lodash';
+import './index.css';
+import React, { Component } from 'react';
 
-//internal
-// import Action from '@src/store/Action';
-
-const {{ORIG_FNAME}}Component = React.createClass({
-  render() {
-    const {content} = this.props;
-
-    return (
-      <div>
-        Hello World <button onClick={this.onButtonClick}>{content}</button>
-      </div>
-    );
-  },
-  onButtonClick(){
-    alert('hello world...');
-  }
-});
+export const _Component = (props) => {
+  return (
+    <div className="{{DASH_FNAME}}">
+      My Component <strong>{{ORIG_FNAME}}</strong>
+    </div>
+  )
+};
 
 
-const mapStateToProps = function(state) {
-  return {
-    content: '{{CAMEL_FNAME}}'
-    // isVisible : _.get( state, 'some_path' )
-  };
-}
+const mapStateToProps = state => {
+  return {}
+};
+const mapDispatchToProps = dispatch => {
+  return {}
+};
 
-
-const mapDispatchToProps = function(dispatch) {
-  return {
-    // onUpdate: bindActionCreators(Action.updateApiToken, dispatch)
- };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)({{ORIG_FNAME}}Component);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(_Component);
