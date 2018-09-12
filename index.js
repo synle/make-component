@@ -1,8 +1,8 @@
 //includes
-var fs = require('fs');
-var path = require('path');
-var _ = require('lodash');
-
+const fs = require('fs');
+const path = require('path');
+const _ = require('lodash');
+const commandPrompt = require('./commandPrompt')
 
 function _process(config, fileName, argv, processCwd){
     // default input
@@ -34,6 +34,8 @@ function _process(config, fileName, argv, processCwd){
     // all done. exit
     process.exit(0);
 
+
+    // private funcs
     function _writeTemplate(content, name, dontOverrideName) {
         var dest;
 
@@ -65,14 +67,10 @@ function _process(config, fileName, argv, processCwd){
 
 module.exports = {
     // this will ask for module name
-    processWithPrompt: function processWithPrompt(promptName, config){
-        require('./commandPrompt')(promptName)
-            .then(function(fileName){
-                _process(config, fileName);
-            });
+    processWithPrompt: (promptName, config) => {
+        commandPrompt(promptName)
+            .then((fileName) => _process(config, fileName));
     },
     // silent process, no prompt for module name
-    process: function process(config){
-        _process(config);
-    }
+    process: (config) => _process(config)
 }
