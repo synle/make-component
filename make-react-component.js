@@ -3,6 +3,7 @@
 require('./index').processWithPrompt(
     'Enter React Component name',
     [
-        ['templates/react/component', 'Component.js']
+        ['templates/react/component', 'index.js', true],
+        ['templates/react/style', 'index.css', true],
     ]
 );
