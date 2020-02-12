@@ -1,27 +1,24 @@
-import './index.css';
-import React, { Component } from 'react';
-import { connect } from 'react-redux'
+import './{{ORIG_FNAME}}.scss';
+import React, {useState, useEffect} from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
-// base component
-export const _Component = (props) => {
+// import * as Selectors from '../selectors';
+
+// import * as Actions from '../actions/ReduxActions';
+
+export default () => {
+  const dispatch = useDispatch();
+
+  // const someSelector = useSelector(Selectors.someSelector);
+
+  // useEffect(() => {
+  //   dispatch(Actions.doSomething());
+  // }, [dispatch]);
+
   return (
-    <div className="{{DASH_FNAME}}">
-      My Component <strong>{{ORIG_FNAME}}</strong>
+    <div className='{{ORIG_FNAME}}'>
+      <div>{{ORIG_FNAME}} Component</div>
+      <div>Hello World</div>
     </div>
-  )
+  );
 };
-
-
-const mapStateToProps = state => {
-  return {}
-};
-
-const mapDispatchToProps = dispatch => {
-  return {}
-};
-
-// connect the component
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(_Component);
