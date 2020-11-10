@@ -7,6 +7,13 @@ interface {{UPPERFIRST_FNAME}}Props {
 export function {{UPPERFIRST_FNAME}}(props: {{UPPERFIRST_FNAME}}Props){
   const [value, setValue] = useState();
 
+  useEffect(
+    () => {
+
+    },
+    [value]
+  )
+
   return (
     <div className={styles.{{UPPERFIRST_FNAME}}}>
       {{UPPERFIRST_FNAME}} Test
