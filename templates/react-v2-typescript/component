@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import './styles.scss';
+import styles from './index.module.scss';
 
 interface {{UPPERFIRST_FNAME}}Props {
 }
@@ -8,7 +8,7 @@ export function {{UPPERFIRST_FNAME}}(props: {{UPPERFIRST_FNAME}}Props){
   const [value, setValue] = useState();
 
   return (
-    <div className={style.{{UPPERFIRST_FNAME}}}>
+    <div className={styles.{{UPPERFIRST_FNAME}}}>
       {{UPPERFIRST_FNAME}} Test
     </div>
   )
