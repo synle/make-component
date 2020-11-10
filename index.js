@@ -54,13 +54,16 @@ function _process(config, fileName, argv, processCwd){
         var dashCaseName = _.kebabCase(directiveName);
         var underscoreCaseName = _.snakeCase(directiveName);
 
+        var upperFirstName = _.upperFirst(fileName);
+
 
         console.log(path.join(__dirname, filePath));
         var content = fs.readFileSync(path.join(__dirname, filePath), 'utf8');
         return content.replace(/{{ORIG_FNAME}}/g, fileName)
                     .replace(/{{CAMEL_FNAME}}/g, directiveName)
                     .replace(/{{DASH_FNAME}}/g, dashCaseName)
-                    .replace(/{{SNAKE_FNAME}}/g, underscoreCaseName);
+                    .replace(/{{SNAKE_FNAME}}/g, underscoreCaseName)
+                    .replace(/{{UPPERFIRST_FNAME}}/g, upperFirstName);
     }
 }
 
