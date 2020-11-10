@@ -1,0 +1,17 @@
+import React, { useEffect, useState } from 'react';
+import './styles.scss';
+
+interface {{UPPERFIRST_FNAME}}Props {
+}
+
+export function {{UPPERFIRST_FNAME}}(props: {{UPPERFIRST_FNAME}}Props){
+  const [value, setValue] = useState();
+
+  return (
+    <div className={style.{{UPPERFIRST_FNAME}}}>
+      {{UPPERFIRST_FNAME}} Test
+    </div>
+  )
+}
+
+export default {{UPPERFIRST_FNAME}};
