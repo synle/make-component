@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styles from './index.module.scss';
 
-interface {{UPPERFIRST_FNAME}}Props {
+type {{UPPERFIRST_FNAME}}Props = {
 }
 
 export function {{UPPERFIRST_FNAME}}(props: {{UPPERFIRST_FNAME}}Props) : JSX.Element | null {
