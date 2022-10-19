@@ -53,9 +53,8 @@ function _process(config, fileName, argv, processCwd){
         var directiveName = _.lowerFirst(fileName.replace(/^SFDC/, 'sfdc'));
         var dashCaseName = _.kebabCase(directiveName);
         var underscoreCaseName = _.snakeCase(directiveName);
-
         var upperFirstName = _.upperFirst(fileName);
-
+        var startCaseFname = _.startCase(fileName).replace(/ /g, '');
 
         console.log(path.join(__dirname, filePath));
         var content = fs.readFileSync(path.join(__dirname, filePath), 'utf8');
@@ -63,7 +62,8 @@ function _process(config, fileName, argv, processCwd){
                     .replace(/{{CAMEL_FNAME}}/g, directiveName)
                     .replace(/{{DASH_FNAME}}/g, dashCaseName)
                     .replace(/{{SNAKE_FNAME}}/g, underscoreCaseName)
-                    .replace(/{{UPPERFIRST_FNAME}}/g, upperFirstName);
+                    .replace(/{{UPPERFIRST_FNAME}}/g, upperFirstName)
+                    .replace(/{{STARTCASE_FNAME}}/g, startCaseFname)
     }
 }
 

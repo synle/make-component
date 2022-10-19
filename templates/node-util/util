@@ -1,4 +1,4 @@
-var {{ORIG_FNAME}}Util = {};
+const {{ORIG_FNAME}}Util = {};
 
 {{ORIG_FNAME}}Util.method = function method(){
     return true;

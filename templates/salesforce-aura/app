@@ -1,8 +1,0 @@
-<aura:application model="java://org.auraframework.impl.admin.AdminModel" controller="java://org.auraframework.impl.admin.AdminController">
-    <aura:attribute name="var1" type="String" description="" />
-    <aura:handler name="init" value="{!this}" action="{!c.init}" />
-
-    <div>
-        <h1>{{ORIG_FNAME}} Application</h1>
-    </div>
-</aura:application>

@@ -2,6 +2,6 @@
 
 //includes
 require('./index').process([
-    ['templates/node/util', 'Util.js'],
+    ['templates/node-util/util', 'Util.js'],
 ]);
 

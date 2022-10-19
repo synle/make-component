@@ -1,16 +1,15 @@
-Make sample code for your angular 1 component from command line
-================================================================
-
+# Make sample code for your angular 1 component from command line
 
 ## To install
+
 ```
 cd make-component;
 npm i;
 npm run build;
 ```
 
-
 ## To use
+
 ```
     # cd to the component dir
     mkdir MyComp
@@ -18,28 +17,32 @@ npm run build;
     new-angular-component
 ```
 
-
 ## Config
+
 | templateFile | outSuffixName | dontOverrideName | outputFileName     |
-|--------------|---------------|------------------|--------------------|
+| ------------ | ------------- | ---------------- | ------------------ |
 | some content | Ctrl.js       | false            | myComponentCtrl.js |
 |              | index.js      | true             | index.js           |
 
-
-
 ## Replacement Strategy
-| Token                 | Method Used | OriginalFileName | Sample Replacement |
-|-----------------------|-------------|------------------|--------------------|
-| {{ORIG_FNAME}}        |             | MyComponent      | MyComponent        |
-| {{CAMEL_FNAME}}       | _.kebabCase | MyComponent      | myComponent        |
-| {{DASH_FNAME}}        | _.snakeCase | MyComponent      | my_component       |
-| {{UPPERFIRST_FNAME}}  | _.upperFirst| MyComponent      | MyComponent       |
 
-
-
+| Token                | Method Used                         | OriginalFileName | Sample Replacement |
+| -------------------- | ----------------------------------- | ---------------- | ------------------ |
+| {{ORIG_FNAME}}       |                                     | My-Component     | My-Component       |
+| {{ORIG_FNAME}}       |                                     | MyComponent      |                    |
+| {{CAMEL_FNAME}}      | \_.kebabCase                        | My-Component     | my-component       |
+| {{CAMEL_FNAME}}      | \_.kebabCase                        | MyComponent      | my-component       |
+| {{DASH_FNAME}}       | \_.snakeCase                        | My-Component     | my_component       |
+| {{DASH_FNAME}}       | \_.snakeCase                        | MyComponent      | my_component       |
+| {{UPPERFIRST_FNAME}} | \_.upperFirst                       | My-Component     | My-Component       |
+| {{UPPERFIRST_FNAME}} | \_.upperFirst                       | MyComponent      | MyComponent        |
+| {{STARTCASE_FNAME}}  | \_.startCase(str).replace(/ /g, '') | My-Component     | myComponent        |
+| {{STARTCASE_FNAME}}  | \_.startCase(str).replace(/ /g, '') | MyComponent      | MyComponent        |
 
 ## Custom "make-component.js"
+
 ### Silent Mode (infer the module name from parent base path name)
+
 ```
 #!/usr/bin/env node
 
@@ -50,6 +53,7 @@ require('./index').process([
 ```
 
 ### Prompt Mode (get the module name from cli prompt)
+
 ```
 #!/usr/bin/env node
 
@@ -61,11 +65,12 @@ require('./index').processWithPrompt(
 );
 ```
 
-
 ## Make script executable
+
 By default you can run `npm run build`, this will generate the script for files starting with `make-*.js` in this folder needed for running your code.
 
 If you are hardcore, you can do the following shell script
+
 ```
 # Make script executable
 chmod +x make-your-script.js;

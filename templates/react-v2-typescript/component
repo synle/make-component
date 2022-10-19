@@ -1,24 +1,24 @@
 import React, { useEffect, useState } from 'react';
 import styles from './index.module.scss';
 
-type {{UPPERFIRST_FNAME}}Props = {
+type {{STARTCASE_FNAME}}Props = {
 }
 
-export function {{UPPERFIRST_FNAME}}(props: {{UPPERFIRST_FNAME}}Props) : JSX.Element | null {
+export function {{STARTCASE_FNAME}}(props: {{STARTCASE_FNAME}}Props) : JSX.Element | null {
   const [value, setValue] = useState();
 
   useEffect(
     () => {
-
+      setValue('Some Test Value');
     },
     [value]
   )
 
   return (
-    <div className={styles.{{UPPERFIRST_FNAME}}}>
-      {{UPPERFIRST_FNAME}} Test
+    <div className={styles.{{STARTCASE_FNAME}}}>
+      {{STARTCASE_FNAME}} Test - {value}
     </div>
   )
 }
 
-export default {{UPPERFIRST_FNAME}};
+export default {{STARTCASE_FNAME}};
