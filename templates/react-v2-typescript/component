@@ -4,7 +4,7 @@ import styles from './index.module.scss';
 interface {{UPPERFIRST_FNAME}}Props {
 }
 
-export function {{UPPERFIRST_FNAME}}(props: {{UPPERFIRST_FNAME}}Props){
+export function {{UPPERFIRST_FNAME}}(props: {{UPPERFIRST_FNAME}}Props) : JSX.Element | null {
   const [value, setValue] = useState();
 
   useEffect(
