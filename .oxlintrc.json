@@ -1,5 +1,5 @@
 {
   "rules": {
-    "eslint(no-extra-boolean-cast)": "off"
+    "no-extra-boolean-cast": "off"
   }
 }
