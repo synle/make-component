@@ -17,7 +17,6 @@ function _prompt(strPrompt, resolve) {
       // re-prompt
       console.log(strPrompt);
       process.openStdin();
-      // _prompt(strPrompt, resolve);
     }
   });
 }

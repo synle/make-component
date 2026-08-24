@@ -1,15 +1,12 @@
-//includes
 const fs = require('fs');
 const path = require('path');
 const _ = require('lodash');
 const commandPrompt = require('./commandPrompt');
 
 function _process(config, fileName, argv, processCwd) {
-  // default input
   argv = argv || process.argv;
   processCwd = processCwd || process.cwd();
 
-  //get input
   var args = argv.slice(2);
   fileName = fileName || args[0] || processCwd.substr(processCwd.lastIndexOf('/') + 1);
   var filePath = args[1] || processCwd;
@@ -30,10 +27,8 @@ function _process(config, fileName, argv, processCwd) {
     console.log('ERROR, no path provided ', fileName, filePath);
   }
 
-  // all done. exit
   process.exit(0);
 
-  // private funcs
   function _writeTemplate(content, name, dontOverrideName) {
     var dest;
 
