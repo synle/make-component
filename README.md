@@ -1,4 +1,4 @@
-# Make sample code for your angular 1 component from command line
+# Make sample code for your component from command line
 
 ## To install
 
@@ -10,11 +10,11 @@ npm run build;
 
 ## To use
 
+`npm run build` makes every `make-*.js` script in this folder executable.
+
 ```
-    # cd to the component dir
-    mkdir MyComp
-    cd MyComp
-    new-angular-component
+# generate react-v2-typescript component files into a target dir
+node make-react-typescript-components.js MyComponent /path/to/output/dir
 ```
 
 ## Config
@@ -26,18 +26,16 @@ npm run build;
 
 ## Replacement Strategy
 
-| Token                | Method Used                         | OriginalFileName | Sample Replacement |
-| -------------------- | ----------------------------------- | ---------------- | ------------------ |
-| {{ORIG_FNAME}}       |                                     | My-Component     | My-Component       |
-| {{ORIG_FNAME}}       |                                     | MyComponent      |                    |
-| {{CAMEL_FNAME}}      | \_.kebabCase                        | My-Component     | my-component       |
-| {{CAMEL_FNAME}}      | \_.kebabCase                        | MyComponent      | my-component       |
-| {{DASH_FNAME}}       | \_.snakeCase                        | My-Component     | my_component       |
-| {{DASH_FNAME}}       | \_.snakeCase                        | MyComponent      | my_component       |
-| {{UPPERFIRST_FNAME}} | \_.upperFirst                       | My-Component     | My-Component       |
-| {{UPPERFIRST_FNAME}} | \_.upperFirst                       | MyComponent      | MyComponent        |
-| {{STARTCASE_FNAME}}  | \_.startCase(str).replace(/ /g, '') | My-Component     | myComponent        |
-| {{STARTCASE_FNAME}}  | \_.startCase(str).replace(/ /g, '') | MyComponent      | MyComponent        |
+Input file name `My-Component`:
+
+| Token                | Method Used                         | Sample Replacement |
+| -------------------- | ----------------------------------- | ------------------ |
+| {{ORIG_FNAME}}       |                                     | My-Component       |
+| {{CAMEL_FNAME}}      | \_.lowerFirst                       | my-Component       |
+| {{DASH_FNAME}}       | \_.kebabCase                        | my-component       |
+| {{SNAKE_FNAME}}      | \_.snakeCase                        | my_component       |
+| {{UPPERFIRST_FNAME}} | \_.upperFirst                       | My-Component       |
+| {{STARTCASE_FNAME}}  | \_.startCase(str).replace(/ /g, '') | MyComponent        |
 
 ## Custom "make-component.js"
 
@@ -46,9 +44,8 @@ npm run build;
 ```
 #!/usr/bin/env node
 
-//includes
 require('./index').process([
-    ['templates/angular-1/html', '.html']
+    ['templates/react-v2-typescript/component', 'index.tsx']
 ]);
 ```
 
@@ -60,7 +57,7 @@ require('./index').process([
 require('./index').processWithPrompt(
     'Enter React Component name',
     [
-        ['templates/react/component', 'Component.js']
+        ['templates/react-v2-typescript/component', 'Component.tsx']
     ]
 );
 ```
@@ -68,16 +65,3 @@ require('./index').processWithPrompt(
 ## Make script executable
 
 By default you can run `npm run build`, this will generate the script for files starting with `make-*.js` in this folder needed for running your code.
-
-If you are hardcore, you can do the following shell script
-
-```
-# Make script executable
-chmod +x make-your-script.js;
-
-# Make a function in your bash to call it
-function make-your-script(){
-    ~/git/make-code/make-your-script.js \
-        $@
-}
-```
